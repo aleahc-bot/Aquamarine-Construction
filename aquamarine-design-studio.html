@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aquamarine Construction · Cape Coral Dock Builders — Design Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&family=Bebas+Neue&family=Anton&family=Archivo:wght@400;500;600;700;800&family=Raleway:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Lato:wght@300;400;700&family=Source+Sans+3:wght@300;400;500;600&family=Roboto:wght@300;400;500;700&family=Work+Sans:wght@300;400;500;600&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ============ GLOBAL TOKENS ============ */
+  :root{
+    --ink:#0d2b3e;--aqua:#159aad;--aqua-deep:#0f7888;--aqua-tint:#e7f3f5;
+    --sand:#f5f0e7;--gray:#5b6b72;--paper:#ffffff;
+    --font-head:'Oswald', sans-serif;--font-body:'Open Sans', sans-serif;
+    --w-head:600;--w-body:400;--head-transform:uppercase;--head-spacing:0.04em;
+    --radius:8px;--btn-radius:4px;--shadow:0 14px 40px rgba(13,43,62,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-body);font-weight:var(--w-body);color:var(--ink);background:var(--paper);line-height:1.65;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:var(--font-head);font-weight:var(--w-head);line-height:1.06;text-transform:var(--head-transform);letter-spacing:var(--head-spacing)}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{width:min(1180px,91vw);margin-inline:auto}
+  .layout{display:none}
+  .layout.show{display:block}
+  .reveal{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ============ LAYOUT 1 — CLASSIC ============ */
+  #l1 .eyebrow{font-family:var(--font-head);font-weight:var(--w-head);text-transform:uppercase;letter-spacing:.22em;font-size:.74rem;color:var(--aqua)}
+  #l1 .btn{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--font-head);font-weight:var(--w-head);text-transform:uppercase;letter-spacing:.06em;font-size:.86rem;padding:.9rem 1.7rem;border-radius:var(--btn-radius);background:var(--aqua);color:#fff;border:2px solid var(--aqua);cursor:pointer;transition:.25s}
+  #l1 .btn:hover{background:var(--aqua-deep);border-color:var(--aqua-deep);transform:translateY(-2px)}
+  #l1 .btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
+  #l1 .btn.ghost:hover{background:#fff;color:var(--ink)}
+  #l1 .btn.dark{background:var(--ink);border-color:var(--ink)}
+  #l1 .topbar{background:var(--ink);color:#dfeef2;font-size:.82rem}
+  #l1 .topbar .wrap{display:flex;justify-content:flex-end;padding:.55rem 0}
+  #l1 .topbar a{display:inline-flex;align-items:center;gap:.4rem;font-weight:600}
+  #l1 header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);box-shadow:0 1px 0 rgba(13,43,62,.08)}
+  #l1 header .wrap{display:flex;align-items:center;justify-content:space-between;padding:.85rem 0}
+  #l1 .logo{display:flex;align-items:center;gap:.7rem}
+  #l1 .logo svg{width:42px;height:42px}
+  #l1 .logo .name{font-family:var(--font-head);font-weight:700;font-size:1.32rem;letter-spacing:.06em;text-transform:uppercase;line-height:1}
+  #l1 .logo .name small{display:block;font-size:.58rem;letter-spacing:.34em;color:var(--aqua);font-weight:600;margin-top:3px}
+  #l1 nav ul{list-style:none;display:flex;align-items:center;gap:1.5rem}
+  #l1 nav a{font-family:var(--font-head);font-weight:500;text-transform:uppercase;letter-spacing:.05em;font-size:.82rem;padding:.4rem 0;position:relative}
+  #l1 nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--aqua);transition:.25s}
+  #l1 nav a:hover::after{width:100%}
+  #l1 .navtoggle{display:none;background:none;border:0;cursor:pointer}
+  #l1 .navtoggle span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0}
+  #l1 .hero{position:relative;color:#fff;overflow:hidden;background:linear-gradient(120deg,var(--ink) 0%,var(--aqua-deep) 120%)}
+  #l1 .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 18%,rgba(255,255,255,.14),transparent 45%)}
+  #l1 .hero .wrap{position:relative;z-index:2;padding:6rem 0 8rem}
+  #l1 .hero h1{font-size:clamp(2.5rem,6vw,4.6rem);max-width:14ch}
+  #l1 .hero p{max-width:54ch;margin:1.4rem 0 2.2rem;font-size:1.08rem;color:#dceef2}
+  #l1 .hero p strong{color:#fff;font-weight:700}
+  #l1 .hero .badges{display:flex;gap:1.5rem;margin-top:2.6rem;flex-wrap:wrap}
+  #l1 .hero .badge{display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:#cfe7ec}
+  #l1 .hero .badge b{font-family:var(--font-head);font-size:1.5rem;color:#fff;line-height:1}
+  #l1 .wave{position:absolute;left:0;right:0;bottom:-1px;z-index:2;line-height:0}
+  #l1 .wave svg{width:100%;height:90px;display:block}
+  #l1 section{padding:5.5rem 0}
+  #l1 .lead h2{font-size:clamp(1.8rem,3.6vw,2.7rem);max-width:18ch}
+  #l1 .lead>.wrap>p{max-width:70ch;margin-top:1.1rem;color:var(--gray)}
+  #l1 .features{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:3rem}
+  #l1 .feature{background:var(--sand);border-radius:var(--radius);padding:2rem 1.7rem;border-top:3px solid var(--aqua);transition:.3s}
+  #l1 .feature:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  #l1 .feature .ic{width:46px;height:46px;color:var(--aqua);margin-bottom:1rem}
+  #l1 .feature h3{font-size:1.1rem;margin-bottom:.55rem}
+  #l1 .feature p{color:var(--gray);font-size:.95rem}
+  #l1 .services{background:var(--aqua-tint)}
+  #l1 .sec-head{text-align:center;margin-bottom:3rem}
+  #l1 .sec-head h2{font-size:clamp(1.8rem,3.6vw,2.7rem);margin-top:.5rem}
+  #l1 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+  #l1 .card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 30px rgba(13,43,62,.08);transition:.3s;display:flex;flex-direction:column}
+  #l1 .card:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+  #l1 .card .top{background:linear-gradient(135deg,var(--ink),var(--aqua-deep));padding:2.2rem 1.8rem;color:#fff;position:relative;overflow:hidden}
+  #l1 .card .top svg{width:54px;height:54px;color:#fff;position:relative;z-index:2}
+  #l1 .card .top::after{content:"";position:absolute;right:-30px;bottom:-30px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.07)}
+  #l1 .card .top h3{margin-top:1rem;font-size:1.18rem;position:relative;z-index:2}
+  #l1 .card .body{padding:1.6rem 1.8rem 1.9rem;flex:1}
+  #l1 .card ul{list-style:none}
+  #l1 .card ul li{padding:.5rem 0;border-bottom:1px solid var(--aqua-tint);font-size:.93rem;color:var(--gray);display:flex;align-items:center;gap:.6rem}
+  #l1 .card ul li::before{content:"";width:7px;height:7px;background:var(--aqua);border-radius:50%;flex:none}
+  #l1 .card ul li:last-child{border-bottom:0}
+  #l1 .about .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:3.5rem;align-items:center}
+  #l1 .about .visual{border-radius:var(--radius);min-height:360px;overflow:hidden;box-shadow:var(--shadow);position:relative;background:var(--aqua-tint)}
+  #l1 .about .visual img{width:100%;height:100%;object-fit:cover;min-height:360px}
+  #l1 .about .visual .stat{position:absolute;left:1.6rem;bottom:1.6rem;color:#fff;background:rgba(8,32,46,.55);backdrop-filter:blur(4px);padding:.8rem 1.1rem;border-radius:10px}
+  #l1 .about .visual .stat b{font-family:var(--font-head);font-size:2.4rem;line-height:1;display:block}
+  #l1 .about .visual .stat span{letter-spacing:.16em;text-transform:uppercase;font-size:.68rem;color:#bfe1e7}
+  #l1 .about h2{font-size:clamp(1.8rem,3.6vw,2.6rem)}
+  #l1 .about p{color:var(--gray);margin:1.1rem 0}
+  #l1 .reviews{background:var(--ink);color:#fff}
+  #l1 .reviews .sec-head h2{color:#fff}
+  #l1 .reviews .eyebrow{color:#7fd3df}
+  #l1 .rgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+  #l1 .review{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:2rem}
+  #l1 .review .stars{color:#f5c451;letter-spacing:.15em;margin-bottom:1rem;font-size:1.05rem}
+  #l1 .review p{color:#dceef2;font-style:italic}
+  #l1 .review .who{margin-top:1.3rem;font-family:var(--font-head);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:.86rem}
+  #l1 .review .who span{display:block;text-transform:none;letter-spacing:0;font-family:var(--font-body);font-weight:400;color:#9fc4cd;font-size:.8rem;margin-top:.2rem}
+  #l1 .cta{background:linear-gradient(120deg,var(--aqua),var(--aqua-deep));color:#fff;text-align:center}
+  #l1 .cta h2{font-size:clamp(1.9rem,4vw,3rem)}
+  #l1 .cta p{max-width:50ch;margin:1rem auto 2rem;color:#eafafc}
+  #l1 footer{background:#08202e;color:#9fb8c2;padding:3rem 0;font-size:.86rem}
+  #l1 footer .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center}
+  #l1 footer .name{font-family:var(--font-head);color:#fff;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+  #l1 .lic{font-size:.78rem;opacity:.8}
+
+  /* ============ LAYOUT 2 — EDITORIAL ============ */
+  #l2 .wrap{width:min(1240px,92vw)}
+  #l2 .eyebrow{font-family:var(--font-head);font-weight:var(--w-head);text-transform:uppercase;letter-spacing:.28em;font-size:.72rem;color:var(--aqua)}
+  #l2 .btn{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--font-head);font-weight:var(--w-head);text-transform:uppercase;letter-spacing:.08em;font-size:.84rem;padding:.95rem 1.9rem;border-radius:var(--btn-radius);background:var(--aqua);color:#fff;border:2px solid var(--aqua);cursor:pointer;transition:.25s}
+  #l2 .btn:hover{background:var(--aqua-deep);border-color:var(--aqua-deep)}
+  #l2 .btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.7)}
+  #l2 .btn.ghost:hover{background:#fff;color:var(--ink)}
+  #l2 .topbar{position:absolute;top:0;left:0;right:0;z-index:30;color:#dfeef2;font-size:.8rem}
+  #l2 .topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding:.7rem 0}
+  #l2 header{position:absolute;top:38px;left:0;right:0;z-index:30}
+  #l2 header .wrap{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 0;border-bottom:1px solid rgba(255,255,255,.16)}
+  #l2 .logo{display:flex;align-items:center;gap:.7rem;color:#fff}
+  #l2 .logo svg{width:40px;height:40px}
+  #l2 .logo .name{font-family:var(--font-head);font-weight:700;font-size:1.3rem;letter-spacing:.08em;text-transform:uppercase;line-height:1}
+  #l2 .logo .name small{display:block;font-size:.56rem;letter-spacing:.36em;color:#7fd3df;margin-top:3px}
+  #l2 nav ul{list-style:none;display:flex;gap:1.6rem}
+  #l2 nav a{color:#fff;font-family:var(--font-head);font-weight:500;text-transform:uppercase;letter-spacing:.05em;font-size:.8rem;opacity:.92}
+  #l2 nav a:hover{opacity:1;color:#7fd3df}
+  #l2 .navtoggle{display:none;background:none;border:0;cursor:pointer}
+  #l2 .navtoggle span{display:block;width:24px;height:2px;background:#fff;margin:5px 0}
+  #l2 .hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;background:var(--ink) center/cover no-repeat;color:#fff;overflow:hidden}
+  #l2 .hero .photo{position:absolute;inset:0;background:center/cover no-repeat;transform:scale(1.04)}
+  #l2 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,28,42,.45),rgba(8,28,42,.25) 40%,rgba(8,28,42,.92))}
+  #l2 .hero .wrap{position:relative;z-index:3;padding-bottom:5rem}
+  #l2 .hero h1{font-size:clamp(2.8rem,7vw,6rem);max-width:16ch;text-shadow:0 2px 30px rgba(0,0,0,.3)}
+  #l2 .hero p{max-width:50ch;margin:1.3rem 0 2rem;font-size:1.1rem;color:#e3f1f4}
+  #l2 .hero .actions{display:flex;gap:1rem;flex-wrap:wrap}
+  #l2 section{padding:6rem 0}
+  #l2 .intro .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:start}
+  #l2 .intro h2{font-size:clamp(1.9rem,3.8vw,2.9rem);max-width:14ch}
+  #l2 .intro .col p{color:var(--gray);margin-bottom:1.1rem}
+  #l2 .intro .col p:first-child{font-size:1.18rem;color:var(--ink);line-height:1.6}
+  #l2 .process{background:var(--sand)}
+  #l2 .process .sec-head{max-width:60ch;margin-bottom:3rem}
+  #l2 .process .sec-head h2{font-size:clamp(1.9rem,3.8vw,2.9rem);margin-top:.4rem}
+  #l2 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
+  #l2 .step{background:#fff;border-radius:var(--radius);padding:2.2rem 1.9rem;box-shadow:0 8px 30px rgba(13,43,62,.07)}
+  #l2 .step .num{font-family:var(--font-head);font-size:3.4rem;font-weight:700;color:var(--aqua-tint);line-height:.8;margin-bottom:.6rem}
+  #l2 .step h3{font-size:1.15rem;margin-bottom:.6rem}
+  #l2 .step p{color:var(--gray);font-size:.94rem}
+  #l2 .work .sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.6rem;flex-wrap:wrap;gap:1rem}
+  #l2 .work .sec-head h2{font-size:clamp(1.9rem,3.8vw,2.9rem);margin-top:.4rem}
+  #l2 .grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:1rem}
+  #l2 .grid figure{position:relative;overflow:hidden;border-radius:var(--radius);background:var(--ink)}
+  #l2 .grid figure img{width:100%;height:100%;object-fit:cover;transition:.6s}
+  #l2 .grid figure:hover img{transform:scale(1.07)}
+  #l2 .grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.1rem 1.2rem;color:#fff;font-family:var(--font-head);text-transform:uppercase;letter-spacing:.06em;font-size:.84rem;background:linear-gradient(transparent,rgba(8,28,42,.85));opacity:0;transform:translateY(8px);transition:.3s}
+  #l2 .grid figure:hover figcaption{opacity:1;transform:none}
+  #l2 .grid .big{grid-column:span 2;grid-row:span 2}
+  #l2 .grid .wide{grid-column:span 2}
+  #l2 .services{background:var(--ink);color:#fff}
+  #l2 .services .sec-head{text-align:center;margin-bottom:3rem}
+  #l2 .services .sec-head h2{color:#fff;font-size:clamp(1.9rem,3.8vw,2.9rem);margin-top:.4rem}
+  #l2 .services .eyebrow{color:#7fd3df}
+  #l2 .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  #l2 .tile{position:relative;border-radius:var(--radius);overflow:hidden;min-height:340px;display:flex;align-items:flex-end;background:var(--aqua-deep)}
+  #l2 .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;transition:.5s}
+  #l2 .tile:hover img{opacity:.7;transform:scale(1.05)}
+  #l2 .tile::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 30%,rgba(8,28,42,.9))}
+  #l2 .tile .t{position:relative;z-index:2;padding:1.8rem}
+  #l2 .tile h3{font-size:1.2rem;margin-bottom:.7rem}
+  #l2 .tile ul{list-style:none}
+  #l2 .tile li{font-size:.86rem;color:#dceef2;padding:.18rem 0;display:flex;gap:.5rem;align-items:center}
+  #l2 .tile li::before{content:"";width:6px;height:6px;border-radius:50%;background:#7fd3df;flex:none}
+  #l2 .quote{position:relative;color:#fff;text-align:center;background:var(--ink) center/cover no-repeat}
+  #l2 .quote .photo{position:absolute;inset:0;background:center/cover no-repeat;opacity:.28}
+  #l2 .quote::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(13,43,62,.85),rgba(15,120,136,.7))}
+  #l2 .quote .wrap{position:relative;z-index:2;max-width:760px}
+  #l2 .quote .stars{color:#f5c451;font-size:1.3rem;letter-spacing:.2em;margin-bottom:1.2rem}
+  #l2 .quote blockquote{font-family:var(--font-head);font-weight:500;text-transform:none;letter-spacing:0;font-size:clamp(1.4rem,3vw,2.1rem);line-height:1.4;font-style:italic}
+  #l2 .quote .who{margin-top:1.4rem;letter-spacing:.18em;text-transform:uppercase;font-size:.8rem;color:#cfe7ec}
+  #l2 .cta{background:var(--aqua-tint);text-align:center}
+  #l2 .cta h2{font-size:clamp(2rem,4.4vw,3.2rem)}
+  #l2 .cta p{max-width:48ch;margin:1rem auto 2rem;color:var(--gray)}
+  #l2 footer{background:#08202e;color:#9fb8c2;padding:3rem 0;font-size:.85rem}
+  #l2 footer .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center}
+  #l2 footer .name{font-family:var(--font-head);color:#fff;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+  #l2 .lic{font-size:.78rem;opacity:.8}
+
+  /* ============ LAYOUT 3 — MODERN ============ */
+  #l3 .eyebrow{font-family:var(--font-body);font-weight:600;text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;color:var(--aqua)}
+  #l3 .btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-head);font-weight:600;font-size:.92rem;padding:.85rem 1.7rem;border-radius:var(--btn-radius);background:var(--ink);color:#fff;border:1.5px solid var(--ink);cursor:pointer;transition:.25s}
+  #l3 .btn:hover{background:var(--aqua-deep);border-color:var(--aqua-deep);transform:translateY(-2px)}
+  #l3 .btn.line{background:transparent;color:var(--ink)}
+  #l3 .btn.line:hover{background:var(--ink);color:#fff}
+  #l3 header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.85);backdrop-filter:blur(12px)}
+  #l3 header .wrap{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 0}
+  #l3 .logo{display:flex;align-items:center;gap:.6rem}
+  #l3 .logo svg{width:38px;height:38px}
+  #l3 .logo .name{font-family:var(--font-head);font-weight:700;font-size:1.2rem;letter-spacing:-.01em;text-transform:none}
+  #l3 .logo .name small{display:block;font-size:.58rem;letter-spacing:.28em;color:var(--aqua);font-weight:600;text-transform:uppercase}
+  #l3 nav ul{list-style:none;display:flex;align-items:center;gap:2rem}
+  #l3 nav a{font-weight:500;font-size:.92rem;color:var(--gray)}
+  #l3 nav a:hover{color:var(--ink)}
+  #l3 .cta-mini{display:flex;align-items:center;gap:1.4rem}
+  #l3 .phone{font-weight:600;font-size:.9rem}
+  #l3 .navtoggle{display:none;background:none;border:0;cursor:pointer}
+  #l3 .navtoggle span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0}
+  #l3 .hero{padding:4rem 0 5rem}
+  #l3 .hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+  #l3 .hero h1{font-size:clamp(2.6rem,5vw,4.4rem);letter-spacing:-.02em;line-height:1.04}
+  #l3 .hero h1 em{font-style:normal;color:var(--aqua)}
+  #l3 .hero p{margin:1.5rem 0 2.2rem;font-size:1.12rem;color:var(--gray);max-width:46ch}
+  #l3 .hero .actions{display:flex;gap:.9rem;flex-wrap:wrap}
+  #l3 .hero .meta{display:flex;gap:2.2rem;margin-top:2.6rem}
+  #l3 .hero .meta b{font-family:var(--font-head);font-size:2rem;display:block;line-height:1}
+  #l3 .hero .meta span{font-size:.82rem;color:var(--gray)}
+  #l3 .hero-photo{position:relative}
+  #l3 .hero-photo .main{border-radius:28px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/5;background:var(--aqua-tint)}
+  #l3 .hero-photo .main img{width:100%;height:100%;object-fit:cover}
+  #l3 .hero-photo .chip{position:absolute;left:-18px;bottom:34px;background:#fff;border-radius:16px;padding:.9rem 1.2rem;box-shadow:var(--shadow);display:flex;align-items:center;gap:.7rem}
+  #l3 .hero-photo .chip .dot{width:38px;height:38px;border-radius:12px;background:var(--aqua-tint);display:grid;place-items:center;color:var(--aqua-deep)}
+  #l3 .hero-photo .chip b{font-family:var(--font-head);font-size:.95rem;text-transform:none}
+  #l3 .hero-photo .chip span{font-size:.74rem;color:var(--gray)}
+  #l3 .strip{padding:1.5rem 0 4rem;overflow:hidden}
+  #l3 .strip .row{display:flex;gap:1rem}
+  #l3 .strip img{height:200px;width:300px;object-fit:cover;border-radius:var(--radius);flex:none;background:var(--aqua-tint)}
+  #l3 section{padding:5.5rem 0}
+  #l3 .sec-head{max-width:56ch;margin-bottom:3rem}
+  #l3 .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.8rem);margin-top:.5rem;letter-spacing:-.02em}
+  #l3 .sec-head p{color:var(--gray);margin-top:.8rem}
+  #l3 .services{background:var(--sand)}
+  #l3 .slist{border-top:1px solid rgba(13,43,62,.12)}
+  #l3 .srow{display:grid;grid-template-columns:60px 1.2fr 2fr auto;gap:1.5rem;align-items:center;padding:1.8rem 0;border-bottom:1px solid rgba(13,43,62,.12);transition:.25s}
+  #l3 .srow:hover{padding-left:1rem}
+  #l3 .srow .n{font-family:var(--font-head);font-weight:600;color:var(--aqua)}
+  #l3 .srow h3{font-size:1.3rem;letter-spacing:-.01em}
+  #l3 .srow p{color:var(--gray);font-size:.95rem}
+  #l3 .srow .go{width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(13,43,62,.2);display:grid;place-items:center;transition:.25s}
+  #l3 .srow:hover .go{background:var(--aqua);border-color:var(--aqua);color:#fff}
+  #l3 .about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+  #l3 .about .ph{border-radius:24px;overflow:hidden;aspect-ratio:1/1;box-shadow:var(--shadow);background:var(--aqua-tint)}
+  #l3 .about .ph img{width:100%;height:100%;object-fit:cover}
+  #l3 .about h2{font-size:clamp(1.9rem,3.6vw,2.7rem);letter-spacing:-.02em}
+  #l3 .about p{color:var(--gray);margin:1.1rem 0}
+  #l3 .about .ticks{list-style:none;margin-top:1.2rem;display:grid;gap:.6rem}
+  #l3 .about .ticks li{display:flex;gap:.7rem;align-items:center;font-weight:500}
+  #l3 .about .ticks li svg{width:22px;height:22px;color:var(--aqua);flex:none}
+  #l3 .gallery .g{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+  #l3 .gallery .g figure{border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3;background:var(--aqua-tint)}
+  #l3 .gallery .g img{width:100%;height:100%;object-fit:cover;transition:.5s}
+  #l3 .gallery .g figure:hover img{transform:scale(1.06)}
+  #l3 .gallery .g .tall{grid-row:span 2;aspect-ratio:auto}
+  #l3 .review{background:var(--aqua-tint)}
+  #l3 .review .wrap{max-width:820px;text-align:center}
+  #l3 .review .stars{color:#f5c451;font-size:1.4rem;letter-spacing:.2em;margin-bottom:1.2rem}
+  #l3 .review blockquote{font-family:var(--font-head);font-weight:500;font-size:clamp(1.4rem,3vw,2.1rem);line-height:1.4;letter-spacing:-.01em}
+  #l3 .review .who{margin-top:1.4rem;color:var(--gray);font-size:.9rem}
+  #l3 .cta .box{background:linear-gradient(120deg,var(--ink),var(--aqua-deep));border-radius:32px;padding:4rem;text-align:center;color:#fff}
+  #l3 .cta h2{font-size:clamp(2rem,4.4vw,3.2rem);letter-spacing:-.02em}
+  #l3 .cta p{max-width:46ch;margin:1rem auto 2rem;color:#dceef2}
+  #l3 .cta .btn{background:#fff;color:var(--ink);border-color:#fff}
+  #l3 .cta .btn:hover{background:var(--aqua);color:#fff;border-color:var(--aqua)}
+  #l3 footer{padding:3rem 0;font-size:.88rem;color:var(--gray)}
+  #l3 footer .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center;border-top:1px solid rgba(13,43,62,.1);padding-top:2rem}
+  #l3 footer .name{font-family:var(--font-head);font-weight:700;color:var(--ink);text-transform:none}
+
+  /* ============ DESIGN STUDIO ============ */
+  .ds-fab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:90;background:var(--ink);color:#fff;border:0;cursor:pointer;padding:1rem .7rem;border-radius:12px 0 0 12px;box-shadow:-6px 0 26px rgba(13,43,62,.28);display:flex;flex-direction:column;align-items:center;gap:.6rem;font-family:var(--font-head);text-transform:uppercase;letter-spacing:.18em;font-size:.66rem;font-weight:600;transition:.25s}
+  .ds-fab:hover{background:var(--aqua-deep);padding-right:1.1rem}
+  .ds-fab.hide{display:none}
+  .ds-fab .label{writing-mode:vertical-rl;transform:rotate(180deg)}
+  .ds-fab svg{width:22px;height:22px}
+  .ds-panel{position:fixed;top:0;right:0;height:100%;width:370px;max-width:92vw;z-index:95;background:#fff;box-shadow:-18px 0 50px rgba(13,43,62,.22);transform:translateX(105%);transition:transform .35s cubic-bezier(.22,.7,.2,1);display:flex;flex-direction:column}
+  .ds-panel.open{transform:none}
+  .ds-head{background:var(--ink);color:#fff;padding:1.3rem 1.4rem;display:flex;justify-content:space-between;align-items:center}
+  .ds-head h3{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:1rem;font-weight:600}
+  .ds-head small{display:block;font-family:'Open Sans',sans-serif;text-transform:none;letter-spacing:0;font-weight:400;color:#9fc4cd;font-size:.72rem;margin-top:.25rem}
+  .ds-close{background:rgba(255,255,255,.12);border:0;color:#fff;width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:1.2rem}
+  .ds-close:hover{background:rgba(255,255,255,.25)}
+  .ds-body{padding:1.3rem 1.4rem;overflow-y:auto;flex:1}
+  .ds-group{margin-bottom:1.5rem}
+  .ds-group>label{display:flex;justify-content:space-between;align-items:center;font-family:'Open Sans',sans-serif;font-weight:600;font-size:.74rem;text-transform:uppercase;letter-spacing:.12em;color:var(--ink);margin-bottom:.7rem}
+  .ds-group>label .val{font-weight:400;letter-spacing:0;text-transform:none;color:var(--aqua-deep);font-size:.78rem}
+  .layout-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.55rem}
+  .layout-grid button{padding:.9rem .4rem;border:1.5px solid #dce5e8;background:#fff;border-radius:10px;cursor:pointer;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.04em;font-size:.72rem;color:var(--ink);transition:.18s;display:flex;flex-direction:column;align-items:center;gap:.45rem}
+  .layout-grid button:hover{border-color:var(--aqua)}
+  .layout-grid button.active{background:var(--ink);border-color:var(--ink);color:#fff}
+  .layout-grid button svg{width:34px;height:24px}
+  .ds-divider{height:1px;background:#eef2f3;margin:0 0 1.5rem}
+  .swatches{display:grid;grid-template-columns:repeat(5,1fr);gap:.55rem}
+  .swatch{height:44px;border-radius:8px;cursor:pointer;border:2px solid transparent;overflow:hidden;display:flex}
+  .swatch.active{border-color:var(--ink);box-shadow:0 0 0 2px #fff inset}
+  .swatch i{flex:1}
+  .ds-select{width:100%;padding:.7rem .8rem;border:1.5px solid #dce5e8;border-radius:8px;background:#fff;font-size:.9rem;color:var(--ink);cursor:pointer;font-family:'Open Sans',sans-serif}
+  .ds-select:focus{outline:none;border-color:var(--aqua)}
+  .seg{display:flex;flex-wrap:wrap;gap:.45rem}
+  .seg button{flex:1;min-width:54px;padding:.55rem .4rem;border:1.5px solid #dce5e8;background:#fff;border-radius:8px;cursor:pointer;font-family:'Open Sans',sans-serif;font-size:.8rem;color:var(--gray);transition:.18s}
+  .seg button:hover{border-color:var(--aqua)}
+  .seg button.active{background:var(--ink);border-color:var(--ink);color:#fff}
+  .preset-grid{display:grid;grid-template-columns:1fr 1fr;gap:.55rem}
+  .preset-grid button{padding:.7rem;border:1.5px solid #dce5e8;background:#fff;border-radius:8px;cursor:pointer;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:.74rem;color:var(--ink);transition:.18s}
+  .preset-grid button:hover{border-color:var(--aqua)}
+  .preset-grid button.active{background:var(--aqua);border-color:var(--aqua);color:#fff}
+  .ds-foot{padding:1rem 1.4rem;border-top:1px solid #eef2f3}
+  .ds-foot button{width:100%;padding:.75rem;border-radius:8px;cursor:pointer;font-family:'Open Sans',sans-serif;font-weight:600;font-size:.82rem;border:1.5px solid var(--ink);background:#fff;color:var(--ink)}
+  .ds-foot button:hover{background:var(--sand)}
+
+  /* ============ RESPONSIVE ============ */
+  @media(max-width:960px){
+    #l1 .features,#l1 .cards,#l2 .steps,#l2 .tiles{grid-template-columns:1fr}
+    #l1 .about .wrap,#l3 .hero .wrap,#l3 .about .wrap{grid-template-columns:1fr}
+    #l1 .rgrid{grid-template-columns:1fr}
+    #l2 .intro .wrap{grid-template-columns:1fr}
+    #l2 .grid{grid-template-columns:1fr 1fr;grid-auto-rows:180px}
+    #l2 .grid .big{grid-column:span 2;grid-row:span 1}
+    #l3 .hero-photo{order:-1}
+    #l3 .gallery .g{grid-template-columns:1fr 1fr}
+    #l3 .gallery .g .tall{grid-row:span 1}
+    #l3 .srow{grid-template-columns:40px 1fr auto;gap:1rem}#l3 .srow p{display:none}
+    #l1 nav ul,#l2 nav ul,#l3 nav ul,#l3 .phone{display:none}
+    #l1 .navtoggle,#l2 .navtoggle,#l3 .navtoggle{display:block}
+    #l1 nav.open ul{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:#fff;padding:1rem 6vw;gap:.4rem;box-shadow:var(--shadow)}
+    #l2 nav.open ul{display:flex;flex-direction:column;position:absolute;top:100%;right:0;background:var(--ink);padding:1rem 6vw;border-radius:0 0 0 12px}
+    #l3 nav.open ul{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:#fff;padding:1rem 6vw;gap:.6rem;box-shadow:var(--shadow)}
+    #l1 .topbar .wrap{justify-content:center}
+    #l2 .topbar{position:static;background:var(--ink)}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<main>
+
+<!-- ================= LAYOUT 1 — CLASSIC ================= -->
+<div class="layout show" id="l1">
+  <div class="topbar"><div class="wrap">
+    <a href="tel:12392434011"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.2 2.2z"/></svg> Call Us Today! 1-239-243-4011</a>
+  </div></div>
+  <header><div class="wrap">
+    <a class="logo" href="#l1top"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="23" fill="var(--aqua)"/><path d="M9 30c3 0 3-2.4 6-2.4S18 30 21 30s3-2.4 6-2.4S30 30 33 30s3-2.4 6-2.4" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><path d="M9 36c3 0 3-2.4 6-2.4S18 36 21 36s3-2.4 6-2.4S30 36 33 36s3-2.4 6-2.4" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><path d="M24 9l3.4 7 7.6.9-5.6 5.2 1.5 7.5L24 32.9 17.1 36.6l1.5-7.5L13 23.9l7.6-.9L24 9z" fill="#fff" opacity=".92"/></svg><span class="name">Aquamarine<small>Construction</small></span></a>
+    <nav id="l1nav"><button class="navtoggle" onclick="this.closest('nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+      <ul><li><a href="#l1top">Home</a></li><li><a href="#l1about">About Us</a></li><li><a href="#l1services">Services</a></li><li><a href="#l1about">Gallery</a></li><li><a href="#l1reviews">Reviews</a></li><li><a href="#l1contact">Contact</a></li></ul>
+    </nav>
+  </div></header>
+  <section class="hero" id="l1top"><div class="wrap">
+    <p class="eyebrow" style="color:#7fd3df">Cape Coral · SW Florida</p>
+    <h1>Cape Coral Marine Contractor</h1>
+    <p>For nearly two decades, <strong>Aquamarine Construction</strong> has served as one of Cape Coral's premiere dock builders — along with boat lifts, seawalls, repair, and marine engineering. We're licensed and insured, and we guarantee the very best quality in our work.</p>
+    <a class="btn ghost" href="#l1contact">Request a Quote</a>
+    <div class="badges"><div class="badge"><b>20+</b><span>Years building<br>in Cape Coral</span></div><div class="badge"><b>40+</b><span>Years of marine<br>experience</span></div><div class="badge"><b>2002</b><span>Operating under<br>Aquamarine</span></div></div>
+  </div><div class="wave"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#ffffff" d="M0 60c160-40 320-40 480-10s320 50 480 20 240-50 480-30v50H0z"/></svg></div></section>
+  <section class="lead reveal"><div class="wrap">
+    <p class="eyebrow">Waterfront craftsmanship</p>
+    <h2>Crafting beautiful, durable docks for Cape Coral living</h2>
+    <p>We specialize in designing and building high-quality docks that enhance the beauty, functionality, and value of your waterfront property. Whether you want a custom dock for your boat, a peaceful place to relax, or a durable structure that stands up to the Florida elements, our experienced team brings your vision to life.</p>
+    <div class="features">
+      <div class="feature"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17h18M5 17V8l7-4 7 4v9M9 17v-5h6v5"/></svg><h3>Expert Dock Builders</h3><p>For 20 years we've been the dock builder Cape Coral trusts. From timeless wood to low-maintenance composite, we select the best materials and apply expert craftsmanship.</p></div>
+      <div class="feature"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7l8-4 8 4M4 7v10l8 4 8-4V7M4 7l8 4 8-4M12 11v10"/></svg><h3>Custom Designs</h3><p>No two properties are alike. Whether you have a small canal lot or a large waterfront estate, we design a dock that complements your space and meets your needs.</p></div>
+      <div class="feature"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg><h3>Durability & Quality</h3><p>Our docks are built to last. We understand salty sea air and storm surge, so we choose materials for strength and longevity in Cape Coral's climate.</p></div>
+    </div>
+  </div></section>
+  <section class="services reveal" id="l1services"><div class="wrap">
+    <div class="sec-head"><p class="eyebrow">What we do</p><h2>Our Services</h2></div>
+    <div class="cards">
+      <div class="card"><div class="top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 18h18M5 18v-7l7-3 7 3v7M3 21c1.5 0 1.5-1.2 3-1.2S10.5 21 12 21s1.5-1.2 3-1.2S19.5 21 21 21"/></svg><h3>Boat Docks & Lifts</h3></div><div class="body"><ul><li>Custom Dock Builders</li><li>Boat Dock Repair</li><li>Boat Lifts</li><li>Boat Lift Repairs</li><li>Dock Demolition / Removal</li><li>Dog Steps</li></ul></div></div>
+      <div class="card"><div class="top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14.7 6.3a3 3 0 0 1 4 4L8 21l-5 1 1-5L14.7 6.3z"/><path d="M13 8l3 3"/></svg><h3>Boat Service & Repair</h3></div><div class="body"><ul><li>Mechanical Services</li><li>Electrical Services</li><li>Full Service Boat Repair</li><li>Deck Repair</li><li>Boat Towing</li></ul></div></div>
+      <div class="card"><div class="top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l9 5-9 4-9-4 9-5z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg><h3>Marine Services</h3></div><div class="body"><ul><li>Seawall Repair</li><li>Tiki Huts</li><li>Barge Service</li><li>Kayak Station</li></ul></div></div>
+    </div>
+  </div></section>
+  <section class="about reveal" id="l1about"><div class="wrap">
+    <div class="visual"><img data-img="dock" alt="Custom dock construction in Cape Coral" loading="lazy"><div class="stat"><b>19+</b><span>Years on the water</span></div></div>
+    <div><p class="eyebrow">A little about us</p><h2>Full-service marine construction since 2002</h2><p>Aquamarine Construction, Inc. is a full-service company offering a wide variety of marine services — dock building, dock demolition, boat lift services and repairs, seawall repairs, dredging, boat repairs, and more.</p><p>Our highly skilled team has more than 40 years of marine contractor experience, and we've proudly operated under the Aquamarine Construction name since 2002.</p><a class="btn dark" href="#l1contact">Learn More About Us</a></div>
+  </div></section>
+  <section class="reviews reveal" id="l1reviews"><div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Reviews</p><h2>What our clients say</h2></div>
+    <div class="rgrid">
+      <div class="review"><div class="stars">★★★★★</div><p>"I wish I could give them 6 stars. Aquamarine installed pilings for a boat lift and dock. They kept to their schedule, did excellent work, and did it all at the best price. Jane was incredibly helpful with the permit process. I very highly recommend them."</p><div class="who">Google Review<span>Cape Coral, FL</span></div></div>
+      <div class="review"><div class="stars">★★★★★</div><p>"I recently hired Aquamarine to construct our dock and lift. From first contact with the salesman to the final stages of the build, we found the entire team to be professional, reliable, and all had excellent workmanship."</p><div class="who">Dee D.<span>South St. Paul, MN</span></div></div>
+    </div>
+  </div></section>
+  <section class="cta reveal" id="l1contact"><div class="wrap"><h2>Ready to build your dream dock?</h2><p>Licensed, insured, and trusted across Cape Coral for nearly two decades. Let's bring your waterfront vision to life.</p><a class="btn dark" href="tel:12392434011">Call 1-239-243-4011</a></div></section>
+  <footer><div class="wrap"><div><div class="name">Aquamarine Construction</div><div class="lic" style="margin-top:.4rem">License # CGC1507652 · 2026 © All Rights Reserved.</div></div><div class="lic">Cape Coral, FL · Docks · Lifts · Seawalls · Tiki Huts</div></div></footer>
+</div>
+
+<!-- ================= LAYOUT 2 — EDITORIAL ================= -->
+<div class="layout" id="l2">
+  <div class="topbar"><div class="wrap"><div class="left"><span>Licensed & Insured · CGC1507652</span></div><a href="tel:12392434011">Call Us Today! 1-239-243-4011</a></div></div>
+  <header><div class="wrap">
+    <a class="logo" href="#l2top"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="23" fill="var(--aqua)"/><path d="M9 30c3 0 3-2.4 6-2.4S18 30 21 30s3-2.4 6-2.4S30 30 33 30s3-2.4 6-2.4" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><path d="M9 36c3 0 3-2.4 6-2.4S18 36 21 36s3-2.4 6-2.4S30 36 33 36s3-2.4 6-2.4" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><path d="M24 9l3.4 7 7.6.9-5.6 5.2 1.5 7.5L24 32.9 17.1 36.6l1.5-7.5L13 23.9l7.6-.9L24 9z" fill="#fff" opacity=".92"/></svg><span class="name">Aquamarine<small>Construction</small></span></a>
+    <nav id="l2nav"><button class="navtoggle" onclick="this.closest('nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+      <ul><li><a href="#l2top">Home</a></li><li><a href="#l2about">About</a></li><li><a href="#l2services">Services</a></li><li><a href="#l2work">Gallery</a></li><li><a href="#l2reviews">Reviews</a></li><li><a href="#l2contact">Contact</a></li></ul>
+    </nav>
+  </div></header>
+  <section class="hero" id="l2top"><div class="photo" data-img="dock"></div><div class="wrap">
+    <p class="eyebrow" style="color:#7fd3df">Cape Coral · SW Florida · Since 2002</p>
+    <h1>We Build Docks That Last a Lifetime</h1>
+    <p>Cape Coral's premiere dock builder — boat lifts, seawalls, tiki huts, and marine repair, crafted with 40+ years of experience and backed by a written warranty.</p>
+    <div class="actions"><a class="btn" href="#l2contact">Request a Quote</a><a class="btn ghost" href="#l2work">See Our Work</a></div>
+  </div></section>
+  <section class="intro reveal" id="l2about"><div class="wrap">
+    <div class="col"><p class="eyebrow">A little about us</p><h2>Full-service marine construction, built on the water</h2></div>
+    <div class="col"><p>Aquamarine Construction, Inc. offers dock building, dock demolition, boat lift services and repairs, seawall repairs, dredging, boat repairs, and more.</p><p>Your dock is far more than a place for your vessel — it's a property enhancement, a secure shelter, and often a lively entertainment hub. We help you create a robust, attractive, highly functional dock that showcases your passion for the water.</p><p>Our team has more than 40 years of marine contractor experience, proudly operating under the Aquamarine name since 2002.</p></div>
+  </div></section>
+  <section class="process reveal"><div class="wrap">
+    <div class="sec-head"><p class="eyebrow">How we work</p><h2>Every dock is built custom to your needs and budget</h2></div>
+    <div class="steps">
+      <div class="step"><div class="num">01</div><h3>Review</h3><p>A free, interactive review and design session — covering construction codes, build zones, boat preference, decking materials, and how you'll use the dock.</p></div>
+      <div class="step"><div class="num">02</div><h3>Design</h3><p>We draw a plan-view drawing to review with you, paired with a quote. From there we modify as desired and review any cost changes together.</p></div>
+      <div class="step"><div class="num">03</div><h3>Build</h3><p>Our crew uses commercial-grade barges and cranes — not homemade machines — so we back our work with a 2-year written warranty.</p></div>
+    </div>
+  </div></section>
+  <section class="work reveal" id="l2work"><div class="wrap">
+    <div class="sec-head"><div><p class="eyebrow">Our work</p><h2>Docks, lifts & tiki huts across SW Florida</h2></div><a class="btn" href="#l2contact" style="background:var(--ink);border-color:var(--ink)">Start Your Project</a></div>
+    <div class="grid">
+      <figure class="big"><img data-img="tikiWalk" alt="Tiki hut with captain's walk" loading="lazy"><figcaption>Tiki Hut & Captain's Walk</figcaption></figure>
+      <figure><img data-img="roundTiki" alt="Round tiki hut" loading="lazy"><figcaption>Round Tiki Hut</figcaption></figure>
+      <figure><img data-img="kayak" alt="Kayak launch station" loading="lazy"><figcaption>Kayak Station</figcaption></figure>
+      <figure class="wide"><img data-img="smallDock" alt="Small dock with tiki" loading="lazy"><figcaption>Dock & Tiki Build</figcaption></figure>
+      <figure class="wide"><img data-img="dock" alt="Dock under construction" loading="lazy"><figcaption>Custom Dock Construction</figcaption></figure>
+    </div>
+  </div></section>
+  <section class="services reveal" id="l2services"><div class="wrap">
+    <div class="sec-head"><p class="eyebrow">What we do</p><h2>Our Services</h2></div>
+    <div class="tiles">
+      <div class="tile"><img data-img="smallDock" alt="" loading="lazy"><div class="t"><h3>Boat Docks & Lifts</h3><ul><li>Custom dock builders</li><li>Boat dock repair</li><li>Boat lifts & lift repairs</li><li>Dock demolition / removal</li><li>Dog steps</li></ul></div></div>
+      <div class="tile"><img data-img="dock" alt="" loading="lazy"><div class="t"><h3>Boat Service & Repair</h3><ul><li>Mechanical services</li><li>Electrical services</li><li>Full service boat repair</li><li>Deck repair</li><li>Boat towing</li></ul></div></div>
+      <div class="tile"><img data-img="roundTiki" alt="" loading="lazy"><div class="t"><h3>Marine Services</h3><ul><li>Seawall repair</li><li>Tiki huts</li><li>Barge service</li><li>Kayak station</li></ul></div></div>
+    </div>
+  </div></section>
+  <section class="quote reveal" id="l2reviews"><div class="photo" data-img="tikiWalk"></div><div class="wrap">
+    <div class="stars">★★★★★</div>
+    <blockquote>"I wish I could give them 6 stars. They kept to their schedule, did excellent work, and did it all at the best price."</blockquote>
+    <div class="who">Google Review · Cape Coral, FL</div>
+  </div></section>
+  <section class="cta reveal" id="l2contact"><div class="wrap"><p class="eyebrow">Free quotes</p><h2>Let's bring your waterfront vision to life</h2><p>From vibrant dreams to stunning reality — call Aquamarine Construction today.</p><a class="btn" href="tel:12392434011">Call 1-239-243-4011</a></div></section>
+  <footer><div class="wrap"><div><div class="name">Aquamarine Construction</div><div class="lic" style="margin-top:.4rem">License # CGC1507652 · 2026 © All Rights Reserved.</div></div><div class="lic">Cape Coral, FL · Boat Docks · Lifts · Seawalls · Tiki Huts</div></div></footer>
+</div>
+
+<!-- ================= LAYOUT 3 — MODERN ================= -->
+<div class="layout" id="l3">
+  <header><div class="wrap">
+    <a class="logo" href="#l3top"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="23" fill="var(--aqua)"/><path d="M9 30c3 0 3-2.4 6-2.4S18 30 21 30s3-2.4 6-2.4S30 30 33 30s3-2.4 6-2.4" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><path d="M9 36c3 0 3-2.4 6-2.4S18 36 21 36s3-2.4 6-2.4S30 36 33 36s3-2.4 6-2.4" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><path d="M24 9l3.4 7 7.6.9-5.6 5.2 1.5 7.5L24 32.9 17.1 36.6l1.5-7.5L13 23.9l7.6-.9L24 9z" fill="#fff" opacity=".92"/></svg><span class="name">Aquamarine<small>Construction</small></span></a>
+    <nav id="l3nav"><button class="navtoggle" onclick="this.closest('nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+      <ul><li><a href="#l3services">Services</a></li><li><a href="#l3about">About</a></li><li><a href="#l3gallery">Gallery</a></li><li><a href="#l3reviews">Reviews</a></li></ul>
+    </nav>
+    <div class="cta-mini"><span class="phone">1-239-243-4011</span><a class="btn" href="#l3contact">Get a Quote</a></div>
+  </div></header>
+  <section class="hero" id="l3top"><div class="wrap">
+    <div>
+      <p class="eyebrow">Cape Coral Dock Builders · Since 2002</p>
+      <h1>Your waterfront, <em>beautifully</em> built.</h1>
+      <p>Custom boat docks, lifts, seawalls and tiki huts designed to enhance the beauty, function and value of your Cape Coral property — and built to last in Florida's climate.</p>
+      <div class="actions"><a class="btn" href="#l3contact">Request a Quote</a><a class="btn line" href="#l3gallery">View Gallery</a></div>
+      <div class="meta"><div><b>20+</b><span>Years building</span></div><div><b>40+</b><span>Years experience</span></div><div><b>2-yr</b><span>Written warranty</span></div></div>
+    </div>
+    <div class="hero-photo"><div class="main"><img data-img="smallDock" alt="Custom dock with tiki hut" loading="lazy"></div><div class="chip"><div class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div><div><b>Licensed & Insured</b><span>CGC1507652</span></div></div></div>
+  </div></section>
+  <div class="strip"><div class="row" id="l3strip"></div></div>
+  <section class="services reveal" id="l3services"><div class="wrap">
+    <div class="sec-head"><p class="eyebrow">What we do</p><h2>Full-service marine construction</h2><p>From custom docks to boat repair and seawall work — one trusted team for your entire waterfront.</p></div>
+    <div class="slist">
+      <div class="srow"><span class="n">01</span><h3>Boat Docks & Lifts</h3><p>Custom dock builds, dock repair, boat lifts and lift repairs, demolition and removal, dog steps.</p><span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      <div class="srow"><span class="n">02</span><h3>Boat Service & Repair</h3><p>Mechanical and electrical services, full-service boat repair, deck repair and boat towing.</p><span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      <div class="srow"><span class="n">03</span><h3>Marine Services</h3><p>Seawall repair, tiki huts, barge service and kayak stations across Southwest Florida.</p><span class="go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    </div>
+  </div></section>
+  <section class="about reveal" id="l3about"><div class="wrap">
+    <div class="ph"><img data-img="kayak" alt="Kayak launch station build" loading="lazy"></div>
+    <div><p class="eyebrow">A little about us</p><h2>Marine craftsmanship you can trust</h2><p>Aquamarine Construction, Inc. is a full-service company offering dock building, demolition, boat lift services and repairs, seawall repairs, dredging, boat repairs and more — with over 40 years of combined marine experience.</p>
+      <ul class="ticks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Commercial-grade barges and cranes</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Free, interactive design & review</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> 2-year written warranty on every build</li></ul>
+    </div>
+  </div></section>
+  <section class="gallery reveal" id="l3gallery"><div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Our work</p><h2>Recent builds</h2></div>
+    <div class="g">
+      <figure class="tall"><img data-img="tikiWalk" alt="Tiki hut and captain's walk" loading="lazy"></figure>
+      <figure><img data-img="roundTiki" alt="Round tiki hut" loading="lazy"></figure>
+      <figure><img data-img="dock" alt="Dock under construction" loading="lazy"></figure>
+      <figure><img data-img="kayak" alt="Kayak station" loading="lazy"></figure>
+      <figure><img data-img="smallDock" alt="Small dock with tiki" loading="lazy"></figure>
+    </div>
+  </div></section>
+  <section class="review reveal" id="l3reviews"><div class="wrap"><div class="stars">★★★★★</div><blockquote>"From first contact to the final stages of the build, the entire team was professional, reliable, and showed excellent workmanship."</blockquote><div class="who">Dee D. · South St. Paul, MN</div></div></section>
+  <section class="cta reveal" id="l3contact"><div class="wrap"><div class="box"><h2>Let's build something great on the water</h2><p>Call for a free quote and let's take your dock from vibrant dreams to stunning reality.</p><a class="btn" href="tel:12392434011">Call 1-239-243-4011</a></div></div></section>
+  <footer><div class="wrap"><div class="name">Aquamarine Construction</div><div>License # CGC1507652 · 2026 © All Rights Reserved · Cape Coral, FL</div></div></footer>
+</div>
+
+</main>
+
+<!-- ================= DESIGN STUDIO ================= -->
+<button class="ds-fab hide" id="dsFab" aria-label="Open Design Studio">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="12" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="13" r="2.5"/><path d="M12 22a10 10 0 1 1 10-10c0 2-2 2-4 2-1.5 0-2 1.5-1 3 .8 1.2-.3 3-2 3-1 0-2 .5-3 2z"/></svg>
+  <span class="label">Design Studio</span>
+</button>
+<aside class="ds-panel open" id="dsPanel">
+  <div class="ds-head"><div><h3>Design Studio</h3><small>Pick a layout, then fine-tune the look</small></div><button class="ds-close" id="dsClose" aria-label="Close">×</button></div>
+  <div class="ds-body">
+    <div class="ds-group">
+      <label>Design layout</label>
+      <div class="layout-grid" id="layoutGrid">
+        <button data-l="l1" class="active"><svg viewBox="0 0 40 28" fill="none"><rect x="1" y="1" width="38" height="9" rx="1.5" fill="currentColor" opacity=".25"/><rect x="1" y="13" width="11" height="14" rx="1.5" fill="currentColor" opacity=".55"/><rect x="14.5" y="13" width="11" height="14" rx="1.5" fill="currentColor" opacity=".55"/><rect x="28" y="13" width="11" height="14" rx="1.5" fill="currentColor" opacity=".55"/></svg>Classic</button>
+        <button data-l="l2"><svg viewBox="0 0 40 28" fill="none"><rect x="1" y="1" width="38" height="16" rx="1.5" fill="currentColor" opacity=".55"/><rect x="1" y="20" width="18" height="7" rx="1.5" fill="currentColor" opacity=".3"/><rect x="21" y="20" width="18" height="7" rx="1.5" fill="currentColor" opacity=".3"/></svg>Editorial</button>
+        <button data-l="l3"><svg viewBox="0 0 40 28" fill="none"><rect x="1" y="2" width="18" height="24" rx="1.5" fill="currentColor" opacity=".3"/><rect x="22" y="4" width="17" height="20" rx="1.5" fill="currentColor" opacity=".55"/></svg>Modern</button>
+      </div>
+    </div>
+    <div class="ds-divider"></div>
+    <div class="ds-group"><label>Color theme <span class="val" id="themeVal">Marine Navy</span></label><div class="swatches" id="themeSwatches"></div></div>
+    <div class="ds-group"><label>Style preset <span class="val" id="presetVal">Classic</span></label><div class="preset-grid" id="presetGrid"></div></div>
+    <div class="ds-group"><label>Heading font</label><select class="ds-select" id="headFont"></select></div>
+    <div class="ds-group"><label>Body font</label><select class="ds-select" id="bodyFont"></select></div>
+    <div class="ds-group"><label>Heading weight</label><div class="seg" id="headWeight"></div></div>
+    <div class="ds-group"><label>Body weight</label><div class="seg" id="bodyWeight"></div></div>
+    <div class="ds-group"><label>Heading case</label><div class="seg" id="headCase"><button data-v="uppercase" class="active">UPPER</button><button data-v="none">Normal</button><button data-v="capitalize">Title</button></div></div>
+  </div>
+  <div class="ds-foot"><button id="dsReset">Reset to default</button></div>
+</aside>
+
+<script>
+/* ---- real site images ---- */
+const IMGS={
+  dock:'https://aquamarinecapecoral.com/wp-content/uploads/2020/12/aquamarine-dock-construction.jpg',
+  tikiWalk:'https://aquamarinecapecoral.com/wp-content/uploads/2020/12/aquamarine-tiki-captain-walk.jpg',
+  roundTiki:'https://aquamarinecapecoral.com/wp-content/uploads/2020/12/aquamarine-round-tiki.jpg',
+  kayak:'https://aquamarinecapecoral.com/wp-content/uploads/2020/12/aquamarine-kayak-station.jpg',
+  smallDock:'https://aquamarinecapecoral.com/wp-content/uploads/2020/12/aquamarine-small-dock-tiki.jpg'
+};
+document.querySelectorAll('img[data-img]').forEach(el=>el.src=IMGS[el.dataset.img]);
+document.querySelectorAll('.photo[data-img]').forEach(el=>el.style.backgroundImage=`url('${IMGS[el.dataset.img]}')`);
+/* modern photo strip */
+const strip=document.getElementById('l3strip');
+['tikiWalk','dock','roundTiki','kayak','smallDock','tikiWalk','dock','roundTiki'].forEach(k=>{const i=document.createElement('img');i.src=IMGS[k];i.loading='lazy';i.alt='';strip.appendChild(i)});
+
+/* ---- reveal ---- */
+function revealIn(scope){scope.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'))}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('#l1 .reveal').forEach(el=>io.observe(el));
+
+/* ---- Design Studio open/close ---- */
+const root=document.documentElement, fab=document.getElementById('dsFab'), panel=document.getElementById('dsPanel');
+function openDS(){panel.classList.add('open');fab.classList.add('hide')}
+function closeDS(){panel.classList.remove('open');fab.classList.remove('hide')}
+fab.onclick=openDS; document.getElementById('dsClose').onclick=closeDS;
+
+/* ---- layout switch ---- */
+const LAYOUT_PRESET={l1:'Classic',l2:'Classic',l3:'Soft'};
+const layoutGrid=document.getElementById('layoutGrid');
+layoutGrid.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+  const id=b.dataset.l;
+  document.querySelectorAll('.layout').forEach(x=>x.classList.remove('show'));
+  const target=document.getElementById(id); target.classList.add('show');
+  setActive(layoutGrid,b);
+  revealIn(target);
+  window.scrollTo({top:0,behavior:'auto'});
+});
+
+/* ---- color themes ---- */
+const THEMES={'Marine Navy':{ink:'#0d2b3e',aqua:'#159aad',deep:'#0f7888',tint:'#e7f3f5',sand:'#f5f0e7',gray:'#5b6b72'},'Coastal Teal':{ink:'#103a3a',aqua:'#1aa7a0',deep:'#137a74',tint:'#e6f4f2',sand:'#f3efe6',gray:'#5a6a68'},'Deep Ocean':{ink:'#08203a',aqua:'#1f7fb5',deep:'#155f8a',tint:'#e8f1f8',sand:'#eef2f5',gray:'#56636e'},'Sandbar':{ink:'#234451',aqua:'#2bb0bf',deep:'#1d8b97',tint:'#eaf6f7',sand:'#f7f0e2',gray:'#6a7378'},'Aqua Bright':{ink:'#0a3540',aqua:'#16c0c8',deep:'#0fa0a8',tint:'#e4f7f8',sand:'#f4f1ea',gray:'#59696e'}};
+const themeVal=document.getElementById('themeVal');
+function applyTheme(n){const t=THEMES[n];if(!t)return;root.style.setProperty('--ink',t.ink);root.style.setProperty('--aqua',t.aqua);root.style.setProperty('--aqua-deep',t.deep);root.style.setProperty('--aqua-tint',t.tint);root.style.setProperty('--sand',t.sand);root.style.setProperty('--gray',t.gray);themeVal.textContent=n}
+const swWrap=document.getElementById('themeSwatches');
+Object.entries(THEMES).forEach(([n,t])=>{const b=document.createElement('div');b.className='swatch';b.title=n;b.dataset.name=n;b.innerHTML=`<i style="background:${t.ink}"></i><i style="background:${t.deep}"></i><i style="background:${t.aqua}"></i>`;b.onclick=()=>{applyTheme(n);setActive(swWrap,b)};swWrap.appendChild(b)});
+
+/* ---- style presets ---- */
+const PRESETS={'Classic':{radius:'8px',btn:'4px',spacing:'0.04em',shadow:'0 14px 40px rgba(13,43,62,.12)'},'Modern':{radius:'16px',btn:'12px',spacing:'-0.01em',shadow:'0 20px 50px rgba(13,43,62,.16)'},'Bold':{radius:'2px',btn:'2px',spacing:'0.07em',shadow:'10px 10px 0 rgba(13,43,62,.18)'},'Elegant':{radius:'12px',btn:'999px',spacing:'0.02em',shadow:'0 10px 34px rgba(13,43,62,.10)'},'Minimal':{radius:'0px',btn:'0px',spacing:'0',shadow:'0 1px 0 rgba(13,43,62,.10)'},'Soft':{radius:'18px',btn:'999px',spacing:'-0.01em',shadow:'0 20px 50px rgba(13,43,62,.12)'}};
+const presetVal=document.getElementById('presetVal');
+function applyPreset(n){const p=PRESETS[n];if(!p)return;root.style.setProperty('--radius',p.radius);root.style.setProperty('--btn-radius',p.btn);root.style.setProperty('--head-spacing',p.spacing);root.style.setProperty('--shadow',p.shadow);presetVal.textContent=n}
+const pg=document.getElementById('presetGrid');
+Object.keys(PRESETS).forEach(n=>{const b=document.createElement('button');b.textContent=n;b.dataset.name=n;b.onclick=()=>{applyPreset(n);setActive(pg,b)};pg.appendChild(b)});
+
+/* ---- fonts ---- */
+const HEAD_FONTS=[['Oswald',"'Oswald', sans-serif"],['Montserrat',"'Montserrat', sans-serif"],['Poppins',"'Poppins', sans-serif"],['Playfair Display',"'Playfair Display', serif"],['Bebas Neue',"'Bebas Neue', sans-serif"],['Anton',"'Anton', sans-serif"],['Archivo',"'Archivo', sans-serif"],['Raleway',"'Raleway', sans-serif"]];
+const BODY_FONTS=[['Open Sans',"'Open Sans', sans-serif"],['Inter',"'Inter', sans-serif"],['Lato',"'Lato', sans-serif"],['Source Sans 3',"'Source Sans 3', sans-serif"],['Roboto',"'Roboto', sans-serif"],['Work Sans',"'Work Sans', sans-serif"],['Nunito',"'Nunito', sans-serif"]];
+const headSel=document.getElementById('headFont'),bodySel=document.getElementById('bodyFont');
+HEAD_FONTS.forEach(([n,v])=>{const o=new Option(n,v);o.style.fontFamily=v;headSel.add(o)});
+BODY_FONTS.forEach(([n,v])=>{const o=new Option(n,v);o.style.fontFamily=v;bodySel.add(o)});
+headSel.onchange=()=>root.style.setProperty('--font-head',headSel.value);
+bodySel.onchange=()=>root.style.setProperty('--font-body',bodySel.value);
+
+/* ---- weights + case ---- */
+function buildSeg(id,vals,cssVar,def){const w=document.getElementById(id);vals.forEach(v=>{const b=document.createElement('button');b.textContent=v;b.dataset.v=v;if(v===def)b.classList.add('active');b.onclick=()=>{root.style.setProperty(cssVar,v);setActive(w,b)};w.appendChild(b)})}
+buildSeg('headWeight',['400','500','600','700'],'--w-head','600');
+buildSeg('bodyWeight',['300','400','500'],'--w-body','400');
+const hc=document.getElementById('headCase');hc.querySelectorAll('button').forEach(b=>b.onclick=()=>{root.style.setProperty('--head-transform',b.dataset.v);setActive(hc,b)});
+
+/* ---- helpers + init ---- */
+function setActive(w,el){w.querySelectorAll('.active').forEach(x=>x.classList.remove('active'));el.classList.add('active')}
+swWrap.querySelector('[data-name="Marine Navy"]').classList.add('active');
+pg.querySelector('[data-name="Classic"]').classList.add('active');
+headSel.value="'Oswald', sans-serif";bodySel.value="'Open Sans', sans-serif";
+
+/* ---- reset ---- */
+document.getElementById('dsReset').onclick=()=>{
+  applyTheme('Marine Navy');applyPreset('Classic');
+  root.style.setProperty('--font-head',"'Oswald', sans-serif");
+  root.style.setProperty('--font-body',"'Open Sans', sans-serif");
+  root.style.setProperty('--w-head','600');root.style.setProperty('--w-body','400');
+  root.style.setProperty('--head-transform','uppercase');
+  headSel.value="'Oswald', sans-serif";bodySel.value="'Open Sans', sans-serif";
+  setActive(swWrap,swWrap.querySelector('[data-name="Marine Navy"]'));
+  setActive(pg,pg.querySelector('[data-name="Classic"]'));
+  setActive(document.getElementById('headWeight'),[...document.querySelectorAll('#headWeight button')].find(b=>b.dataset.v==='600'));
+  setActive(document.getElementById('bodyWeight'),[...document.querySelectorAll('#bodyWeight button')].find(b=>b.dataset.v==='400'));
+  setActive(hc,[...hc.querySelectorAll('button')].find(b=>b.dataset.v==='uppercase'));
+};
+</script>
+</body>
+</html>
