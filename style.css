@@ -377,3 +377,15 @@
 .legal .contact-block{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:1.4rem 1.6rem;margin-top:2rem}
 .legal .contact-block p{margin:.25rem 0}
 .fillin{background:#fff3cd;color:#7a5b00;padding:0 .3em;border-radius:4px;font-weight:600}
+
+/* ============ VIDEO EMBEDS ============ */
+.video-frame{width:100%;aspect-ratio:16/9;border-radius:16px;box-shadow:var(--shadow);display:block;background:#0d2b3e;object-fit:cover}
+.video-center{max-width:840px;margin:1.6rem auto 0}
+.lead-split{display:grid;grid-template-columns:1.05fr .95fr;gap:2.6rem;align-items:center;text-align:left;margin-bottom:2.6rem}
+.lead-split .lead-copy{text-align:left}
+.videoband{padding:clamp(3rem,6vw,5.5rem) 0}
+.video-intro{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem;align-items:center;text-align:left}
+.video-intro .lead-copy{text-align:left}
+@media(max-width:860px){
+  .lead-split,.video-intro{grid-template-columns:1fr;gap:1.6rem}
+}

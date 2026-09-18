@@ -31,6 +31,14 @@ floating category pill bar, soft rounded floating cards).
 - `style.css` — all styling for every page.
 - `script.js` — shared behaviour: mobile menu, scroll reveals, count-up stats,
   header shrink on scroll, gallery filter + lightbox, and the contact-form note.
+- `images/` — the 8 photos, logo, and favicon the site uses (already included).
+
+## Images
+
+The site loads all its pictures from the local `images/` folder, and those files
+are already included in this package — nothing extra to download. If you ever want
+to swap a photo, just replace the file in `images/` with one of the same name
+(e.g. drop a new `dock.jpg` in to change the boat-dock photo).
 
 ## Running locally
 
