@@ -37,6 +37,9 @@
       .sort(function (a, b) { return a.getAttribute('data-i') - b.getAttribute('data-i'); }),
     wip: Array.prototype.slice.call(document.querySelectorAll('.wip-strip [data-full]'))
   };
+  function gridVisible() {
+    return Array.prototype.filter.call(document.querySelectorAll('#owgrid .ow-tile'), function (t) { return !t.hidden; });
+  }
   var set = [], idx = 0, lastFocus = null;
 
   function show(i) {
@@ -48,9 +51,10 @@
     prev.style.display = next.style.display = set.length > 1 ? '' : 'none';
   }
   function open(el) {
-    var inWork = el.closest('.ourwork');
-    set = inWork ? groups.work : groups.wip;
-    var i = inWork ? parseInt(el.getAttribute('data-i'), 10) : set.indexOf(el);
+    var inRows = el.classList.contains('mq-item');
+    var inGrid = el.classList.contains('ow-tile');
+    set = inRows ? groups.work : inGrid ? gridVisible() : groups.wip;
+    var i = inRows ? parseInt(el.getAttribute('data-i'), 10) : set.indexOf(el);
     lastFocus = el; show(Math.max(0, i)); lb.classList.add('show');
     if (closeBtn) closeBtn.focus();
   }
@@ -59,7 +63,7 @@
     if (lastFocus && lastFocus.getAttribute('aria-hidden') !== 'true') lastFocus.focus();
   }
 
-  document.querySelectorAll('.ourwork .mq-item, .wip-strip [data-full]').forEach(function (el) {
+  document.querySelectorAll('.ourwork .mq-item, #owgrid .ow-tile, .wip-strip [data-full]').forEach(function (el) {
     el.addEventListener('click', function () { open(el); });
     if (el.classList.contains('dup')) return; // duplicates stay out of the tab order
     el.setAttribute('tabindex', '0'); el.setAttribute('role', 'button');
@@ -86,4 +90,21 @@
     var dx = e.changedTouches[0].clientX - sx; sx = null;
     if (Math.abs(dx) > 50 && set.length > 1) show(idx + (dx < 0 ? 1 : -1));
   });
+
+  /* ---------- Category filter: "All" = moving rows, a category = still grid ---------- */
+  var bar = document.getElementById('owfilter');
+  var rows = document.getElementById('owrows');
+  var grid = document.getElementById('owgrid');
+  if (bar && rows && grid) {
+    bar.addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      var cat = b.getAttribute('data-cat');
+      bar.querySelectorAll('button').forEach(function (x) {
+        var on = x === b; x.classList.toggle('active', on); x.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      if (cat === 'all') { grid.hidden = true; rows.hidden = false; return; }
+      grid.querySelectorAll('.ow-tile').forEach(function (t) { t.hidden = t.getAttribute('data-cat') !== cat; });
+      rows.hidden = true; grid.hidden = false;
+    });
+  }
 })();
