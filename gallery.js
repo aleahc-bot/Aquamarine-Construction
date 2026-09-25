@@ -103,7 +103,7 @@
         var on = x === b; x.classList.toggle('active', on); x.setAttribute('aria-pressed', on ? 'true' : 'false');
       });
       if (cat === 'all') { grid.hidden = true; rows.hidden = false; return; }
-      grid.querySelectorAll('.ow-tile').forEach(function (t) { t.hidden = t.getAttribute('data-cat') !== cat; });
+      grid.querySelectorAll('.ow-tile').forEach(function (t) { t.hidden = (t.getAttribute('data-cat') || '').split(' ').indexOf(cat) === -1; });
       rows.hidden = true; grid.hidden = false;
     });
   }
