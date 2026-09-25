@@ -2,7 +2,7 @@
    Runs after script.js (both deferred). Adds:
    - lightbox for the scrolling "Our Work" rows and the Work in Progress strip
    - previous / next arrows, captions, keyboard (Esc, ←, →) and swipe in the lightbox
-   - "View more" link to the matching service page when a category is picked */
+   - "Learn more about…" link to the matching service page when a category is picked */
 (function () {
   'use strict';
 
@@ -89,13 +89,13 @@
   var grid = document.getElementById('owgrid');
   var more = document.getElementById('owmore');
   var moreLink = document.getElementById('owmorelink');
-  // Where "View more" goes for each category
+  // Where "Learn more" goes for each category
   var pages = {
-    docks: ['boat-docks.html', 'View more boat docks'],
-    lifts: ['boat-lifts.html', 'View more boat lifts'],
-    tiki: ['tiki-huts.html', 'View more tiki huts'],
-    seawalls: ['seawall-repair.html', 'View more seawalls'],
-    kayak: ['kayak-stations.html', 'View more kayak stations']
+    docks: ['boat-docks.html', 'Learn more about Boat Docks'],
+    lifts: ['boat-lifts.html', 'Learn more about Boat Lifts'],
+    tiki: ['tiki-huts.html', 'Learn more about Tiki Huts'],
+    seawalls: ['seawall-repair.html', 'Learn more about Seawalls'],
+    kayak: ['kayak-stations.html', 'Learn more about Kayak Stations']
   };
   if (bar && rows && grid) {
     bar.addEventListener('click', function (e) {
