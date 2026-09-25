@@ -2,18 +2,9 @@
    Runs after script.js (both deferred). Adds:
    - lightbox for the scrolling "Our Work" rows and the Work in Progress strip
    - previous / next arrows, captions, keyboard (Esc, ←, →) and swipe in the lightbox
-   - the draggable before & after comparison sliders */
+   - "View more" link to the matching service page when a category is picked */
 (function () {
   'use strict';
-
-  /* ---------- Before & After sliders ---------- */
-  document.querySelectorAll('.cmp').forEach(function (box) {
-    var range = box.querySelector('.cmp-range');
-    if (!range) return;
-    function set() { box.style.setProperty('--pos', range.value + '%'); }
-    range.addEventListener('input', set);
-    set();
-  });
 
   /* ---------- Lightbox ---------- */
   var lb = document.getElementById('lightbox');
@@ -35,7 +26,8 @@
   var groups = {
     work: Array.prototype.slice.call(document.querySelectorAll('.ourwork .mq-item:not(.dup)'))
       .sort(function (a, b) { return a.getAttribute('data-i') - b.getAttribute('data-i'); }),
-    wip: Array.prototype.slice.call(document.querySelectorAll('.wip-strip [data-full]'))
+    wip: Array.prototype.slice.call(document.querySelectorAll('.wip-strip [data-full]')),
+    ba: Array.prototype.slice.call(document.querySelectorAll('.ba2-list [data-full]'))
   };
   function gridVisible() {
     return Array.prototype.filter.call(document.querySelectorAll('#owgrid .ow-tile'), function (t) { return !t.hidden; });
@@ -53,7 +45,7 @@
   function open(el) {
     var inRows = el.classList.contains('mq-item');
     var inGrid = el.classList.contains('ow-tile');
-    set = inRows ? groups.work : inGrid ? gridVisible() : groups.wip;
+    set = inRows ? groups.work : inGrid ? gridVisible() : el.closest('.ba2-list') ? groups.ba : groups.wip;
     var i = inRows ? parseInt(el.getAttribute('data-i'), 10) : set.indexOf(el);
     lastFocus = el; show(Math.max(0, i)); lb.classList.add('show');
     if (closeBtn) closeBtn.focus();
@@ -63,7 +55,7 @@
     if (lastFocus && lastFocus.getAttribute('aria-hidden') !== 'true') lastFocus.focus();
   }
 
-  document.querySelectorAll('.ourwork .mq-item, #owgrid .ow-tile, .wip-strip [data-full]').forEach(function (el) {
+  document.querySelectorAll('.ourwork .mq-item, #owgrid .ow-tile, .wip-strip [data-full], .ba2-list [data-full]').forEach(function (el) {
     el.addEventListener('click', function () { open(el); });
     if (el.classList.contains('dup')) return; // duplicates stay out of the tab order
     el.setAttribute('tabindex', '0'); el.setAttribute('role', 'button');
@@ -95,6 +87,16 @@
   var bar = document.getElementById('owfilter');
   var rows = document.getElementById('owrows');
   var grid = document.getElementById('owgrid');
+  var more = document.getElementById('owmore');
+  var moreLink = document.getElementById('owmorelink');
+  // Where "View more" goes for each category
+  var pages = {
+    docks: ['boat-docks.html', 'View more boat docks'],
+    lifts: ['boat-lifts.html', 'View more boat lifts'],
+    tiki: ['tiki-huts.html', 'View more tiki huts'],
+    seawalls: ['seawall-repair.html', 'View more seawalls'],
+    kayak: ['kayak-stations.html', 'View more kayak stations']
+  };
   if (bar && rows && grid) {
     bar.addEventListener('click', function (e) {
       var b = e.target.closest('button'); if (!b) return;
@@ -102,7 +104,12 @@
       bar.querySelectorAll('button').forEach(function (x) {
         var on = x === b; x.classList.toggle('active', on); x.setAttribute('aria-pressed', on ? 'true' : 'false');
       });
-      if (cat === 'all') { grid.hidden = true; rows.hidden = false; return; }
+      if (cat === 'all') { grid.hidden = true; rows.hidden = false; if (more) more.hidden = true; return; }
+      if (more && moreLink && pages[cat]) {
+        moreLink.href = pages[cat][0];
+        moreLink.firstChild.nodeValue = pages[cat][1] + ' ';
+        more.hidden = false;
+      }
       grid.querySelectorAll('.ow-tile').forEach(function (t) { t.hidden = (t.getAttribute('data-cat') || '').split(' ').indexOf(cat) === -1; });
       rows.hidden = true; grid.hidden = false;
     });
