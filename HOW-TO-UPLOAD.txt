@@ -1,0 +1,50 @@
+AQUAMARINE CONSTRUCTION WEBSITE: HOW TO UPLOAD
+================================================
+
+Everything in this folder IS the website. Upload all of it, exactly as it is.
+
+WHAT'S IN HERE
+--------------
+Pages (.html)      index, about, services, gallery, reviews, contact,
+                   boat-docks, boat-dock-repair, boat-lifts, seawall-repair,
+                   tiki-huts, kayak-stations, marine-services,
+                   privacy, terms, thankyou
+Styles & scripts   style.css, gallery.css, script.js, gallery.js
+Thankyou/          thank-you page (keep as is)
+images/            all photos, sorted by type:
+   site/              logo, favicon, video thumbnails
+   docks/             dock photos
+   boat-lifts/        boat lifts, lift covers, piling lifts
+   tiki-huts/         tiki hut photos
+   seawalls/          seawall photos
+   kayak/             kayak & canoe lifts
+   featured-project/  the tiki hut + canopy lift + dock project (testimonial video)
+
+GITHUB
+------
+1. Open the repository on github.com (the main page, not inside a folder).
+2. Click "Add file" > "Upload files".
+3. Open this folder on your computer, select EVERYTHING inside it (Ctrl+A)
+   and drag it into the upload box. The "images" folder keeps its subfolders.
+4. Click "Commit changes". Wait 1-2 minutes, then refresh the site.
+
+Do NOT upload this folder itself (that creates a folder inside the repository).
+Upload what is INSIDE it.
+
+HOSTINGER (aquamarinecapecoral.com)
+-----------------------------------
+1. File Manager > public_html.
+2. Upload everything inside this folder, replacing the old files.
+
+VIDEOS
+------
+The videos (video/andy-rich.mp4, video/testimonial.mp4) are not in this folder
+because they are too large. They are already on the site. Leave the existing
+"video" folder where it is.
+
+OLD FILES YOU CAN DELETE (on GitHub / Hostinger, optional)
+----------------------------------------------------------
+images/gallery/  (old folder, not used)
+UPLOAD-TO-GITHUB/  (if it was uploaded by mistake)
+Any loose .jpg files directly inside images/ (the site now uses the subfolders).
+Keep images/ subfolders listed above.
